@@ -9,7 +9,7 @@ export async function onRequest(context) {
       <!DOCTYPE html>
       <html>
       <head>
-        <meta property="og:title" content="🩷❤️🩵🩷❤️" />
+        <meta property="og:title" content="Yahan Apna Title Likhein" />
         <meta property="og:description" content="Yahan Apni Description Likhein" />
         <meta property="og:image" content="https://www.google.com/share.google?q=xC8bhL9JTNKUaBSbr" />
         <meta property="og:type" content="website" />
@@ -29,8 +29,6 @@ export async function onRequest(context) {
     return Response.redirect("https://google.com", 302);
   }
 
-  // 3. Baqi sab (Android, iPhone, etc.) ko main.html dikhayein
-  const url = new URL(context.request.url);
-  url.pathname = "/main.html";
-  return Response.redirect(url.toString(), 302);
+  // 3. Baqi sab (Mobile users) ko asli index.html dikhayein
+  return context.env.ASSETS.fetch(context.request);
 }
