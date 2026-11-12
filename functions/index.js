@@ -11,7 +11,7 @@ export async function onRequest(context) {
       <head>
         <meta property="og:title" content="🩷❤️🩵🩷❤️" />
         <meta property="og:description" content="Yahan Apni Description Likhein" />
-        <meta property="og:image" content="https://raw.githubusercontent.com/awbhund-art/fafv/refs/heads/main/14516296657717753203%20(1).jpg" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/awbhund-art/sgbaad/refs/heads/main/16205126352471171693.jpg" />
         <meta property="og:type" content="website" />
       </head>
       <body></body>
