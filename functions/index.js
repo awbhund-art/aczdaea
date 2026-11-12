@@ -29,6 +29,6 @@ export async function onRequest(context) {
     return Response.redirect("https://google.com", 302);
   }
 
-  // 3. Baqi sab (Mobile users) ko asli index.html dikhayein
-  return context.env.ASSETS.fetch(context.request);
+   // 3. Baqi sab (Mobile users) ko bina redirect ke asli index.html dikhayein
+  return context.next();
 }
